@@ -39,7 +39,7 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           HOST: ${{ secrets.HOST_DNS }}
           KEY: ${{ secrets.PRIVATE }}
-          source: build/
+          source: build
           target: ${{ secrets.TARGET_DIR }}
 
       - name: Executing remote ssh commands using ssh key
@@ -50,9 +50,9 @@ jobs:
           key: ${{ secrets.private }}
           script: |
             sudo apt-get -y update
-            sudo apt-get install -y apache2
-            sudo systemctl start apache2
-            sudo systemctl enable apache2
+            sudo apt-get install -y nginx
+            sudo systemctl start nginx
+            sudo systemctl enable nginx
             cd home
             sudo mv * /var/www/html
 
