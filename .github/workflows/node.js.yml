@@ -29,13 +29,15 @@ jobs:
      runs-on: ubuntu-latest
      needs: build
      steps:
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
+      - name: Deploy to Server1
+        uses: appleboy/scp-action@master
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+          USERNAME: ${{ secrets.USERNAME }}
+          HOST: ${{ secrets.HOST_DNS }}
+          KEY: ${{ secrets.PRIVATE }}
+        with:
+          source: 'build/'
+          target: ${{ secrets.TARGET_DIR }}
 
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
