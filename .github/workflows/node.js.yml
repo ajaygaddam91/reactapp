@@ -49,6 +49,7 @@ jobs:
             #sudo systemctl start apache2
             #sudo systemctl enable apache2
             cd /var/www/html
+            sudo apt install -y nodejs npm
             npm install
             npm build
             npm i serve
