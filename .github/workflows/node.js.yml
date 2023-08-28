@@ -3,14 +3,6 @@ name: Deploy to EC2 with Nginx
 
 on:
   push:
-    branches:
-      - master
-
-jobs:
-  name: Node.js CI
-
-on:
-  push:
     branches: [ "master" ]
 
 jobs:
