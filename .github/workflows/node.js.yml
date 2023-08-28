@@ -36,6 +36,9 @@ jobs:
           HOST: ${{ secrets.HOST_DNS }}
           KEY: ${{ secrets.PRIVATE }}
         with:
+          USERNAME: ${{ secrets.USERNAME }}
+          HOST: ${{ secrets.HOST_DNS }}
+          KEY: ${{ secrets.PRIVATE }}
           source: 'build/'
           target: ${{ secrets.TARGET_DIR }}
 
