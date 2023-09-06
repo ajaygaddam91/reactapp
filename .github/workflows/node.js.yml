@@ -1,17 +1,35 @@
-# Copy code
 name: Deploy to EC2 with Nginx
+
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
+
 jobs:
   build:
     runs-on: self-hosted
-   steps:
-    - name: Gitcheckout
-      uses: actions/checkout@v3
-      uses: actions/setup-node@v3
-    - run: npm ci
-    - run: npm run build --if-present
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify your desired Node.js version
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+          # You can add any other necessary setup steps here
+
+      - name: Build
+        run: |
+          npm run build
+          # Add any other build-related commands here
+
+ 
+
   
 
 
